@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet, } from 'react-native';
+import HomeScreen from './src/screens/HomeScreen';
+
 
 export default function App() {
   return (
-    <View>
-      <Text>Proyecto Final colección HotWheels</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <HomeScreen/>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: Platform.OS === 'ios' ? 'lightgrey' : 'lightblue',
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  
 });
