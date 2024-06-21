@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
 
 const Header = () => {
   return (
@@ -15,11 +14,12 @@ const styles = StyleSheet.create({
   container:{
     width:'100%',
     height:50,
-    backgroundColor:'lightgrey',
+    backgroundColor:'#002d5b',
     justifyContent:'center',
     alignItems:'center',
   },
   title:{
-    fontSize:30
+    fontSize:30,
+    color:'white'
   }
 })

@@ -1,12 +1,15 @@
-import { StyleSheet, View} from 'react-native'
-import React from 'react'
-import Header from '../components/Header'
+import { Image, StyleSheet, View} from 'react-native'
 import Home from '../components/Home'
 
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Header style={styles.header}/>
+      {/*<Header style={styles.header}/>*/}
+      <Image 
+        source={require('../../assets/img/HW-logo.png')} 
+        style={styles.logo}
+        resizeMode='contain'
+      />
       <Home/>
     </View>
   )
@@ -23,5 +26,11 @@ const styles = StyleSheet.create({
   },
   header:{
     alignSelf:'flex-start'
+  },
+  logo:{
+    height:60,
+    width:'80%',
+    margin: 'auto',
+    marginTop:15
   }
 })

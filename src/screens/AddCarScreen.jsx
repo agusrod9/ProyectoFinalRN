@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 
-const CarCard = () => {
+const AddCarScreen = () => {
   return (
     <View>
-      <Text>CarCard</Text>
+      <Text>AddCarScreen</Text>
     </View>
   )
 }
 
-export default CarCard
+export default AddCarScreen
 
 const styles = StyleSheet.create({})

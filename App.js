@@ -1,4 +1,4 @@
-import { Platform, SafeAreaView, StyleSheet, } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet } from 'react-native';
 import HomeScreen from './src/screens/HomeScreen';
 
 
@@ -12,12 +12,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Platform.OS === 'ios' ? 'lightgrey' : 'lightblue',
+    backgroundColor: Platform.OS === 'ios' ? '#2566af' : 'lightblue',
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  
 });
