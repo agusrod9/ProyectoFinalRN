@@ -1,21 +1,22 @@
 import { Pressable, StyleSheet, View, Text } from 'react-native'
 import { MaterialIcons , MaterialCommunityIcons , SimpleLineIcons   } from '@expo/vector-icons';
+import { Color } from '../global/myColors';
 
 const Home = () => {
   return (
     <View style={styles.container}>
       <Pressable style={styles.icon} onPress={()=>{console.log('Agregar auto')}}>
-        <SimpleLineIcons name="camera" size={90} color="black" />
+        <SimpleLineIcons name="camera" size={90} color={Color.homeIcons}/>
         <Text style={styles.iconText}>Agregar auto</Text>
       </Pressable>
 
       <Pressable style={styles.icon} onPress={()=>{console.log('Ver colección')}}>
-        <MaterialIcons name="grid-view" size={90} color="black" />
+        <MaterialIcons name="grid-view" size={90} color={Color.homeIcons}/>
         <Text style={styles.iconText}>Ver colección</Text>
       </Pressable>
 
       <Pressable style={styles.icon} onPress={()=>{console.log('Deseos')}}>
-        <MaterialCommunityIcons name="cart-heart" size={90} color="black" />
+        <MaterialCommunityIcons name="cart-heart" size={90} color={Color.homeIcons}/>
         <Text style={styles.iconText}>Deseos</Text>
       </Pressable>
     </View>
@@ -38,7 +39,9 @@ const styles = StyleSheet.create({
     justifyContent:'center',
   },
   iconText:{
+    color: Color.homeIconsText,
     textAlign:'center',
-    fontSize:15
+    fontSize:16,
+    fontStyle:'italic'
   }
 })

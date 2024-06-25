@@ -1,5 +1,6 @@
 import { Image, StyleSheet, View} from 'react-native'
 import Home from '../components/Home'
+import Filters from '../components/Filters'
 
 const HomeScreen = () => {
   return (
