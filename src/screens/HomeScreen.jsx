@@ -1,17 +1,16 @@
 import { Image, StyleSheet, View} from 'react-native'
 import Home from '../components/Home'
-import Filters from '../components/Filters'
+import { Color } from '../global/myColors'
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
-      {/*<Header style={styles.header}/>*/}
       <Image 
         source={require('../../assets/img/HW-logo.png')} 
         style={styles.logo}
         resizeMode='contain'
       />
-      <Home/>
+      <Home navigation={navigation}/>
     </View>
   )
 }
@@ -23,10 +22,8 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:'column',
     width:'100%',
+    backgroundColor: Color.appBG,
     //justifyContent:'center',
-  },
-  header:{
-    alignSelf:'flex-start'
   },
   logo:{
     height:60,
@@ -34,4 +31,5 @@ const styles = StyleSheet.create({
     margin: 'auto',
     marginTop:15
   }
+
 })

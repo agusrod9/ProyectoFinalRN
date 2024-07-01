@@ -2,13 +2,13 @@ import { StyleSheet,  View } from 'react-native'
 import Header from '../components/Header'
 import Filters from '../components/Filters'
 import TabNav from '../components/TabNav'
+import CarList from '../components/CarList'
 
-const MyCollectionScreen = () => {
+const MyCollectionScreen = ({navigation}) => {
   return (
-    <View>
-      <Header/>
+    <View style={styles.container}>
       <Filters/>
-      <CarList/>
+      <CarList navigation={navigation}/>
       <TabNav/>
     </View>
   )
@@ -17,5 +17,11 @@ const MyCollectionScreen = () => {
 export default MyCollectionScreen
 
 const styles = StyleSheet.create({
-
+  container:{
+    flex: 1,
+    alignContent:'space-between',
+    justifyContent:'center',
+    alignItems:'center',
+    width:'100%',
+  }
 })

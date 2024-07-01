@@ -1,17 +1,14 @@
-import { StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import HomeStackNavigator from './HomeStackNavigator'
+import MainStackNavigator from './MainStackNavigator'
 
 
 const Navigator = () => {
     
   return (
     <NavigationContainer>
-      <HomeStackNavigator />
+      <MainStackNavigator/>
     </NavigationContainer>
   )
 }
 
 export default Navigator
-
-const styles = StyleSheet.create({})

@@ -6,5 +6,5 @@ export const Color ={
     homeIconsText: '#FFFB00',
     headerTitle: '',
     headerBG:'',
-    cardBG:''
+    cardBG:'#0064ff'
 }

@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native'
 
-const AddCarScreen = () => {
+import { StyleSheet, Text, View } from 'react-native'
+import Camera from '../components/Camera'
+
+const AddCarScreen = ({navigation}) => {
   return (
-    <View>
-      <Text>AddCarScreen</Text>
-    </View>
+      <Camera />
   )
 }
 

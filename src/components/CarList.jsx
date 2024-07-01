@@ -1,22 +1,28 @@
-import { View , StyleSheet, FlatList, Text, Image} from 'react-native'
+import { View , StyleSheet, FlatList, Text, Image, Pressable} from 'react-native'
 import data from '../data/test_cars.json'
 
-const CarList = () => {
+const CarList = ({navigation}) => {
     
+const goToCarCard = (item) =>{
+    navigation.navigate('CarCard', item )
+}
+
   return (
         <View style={styles.container}>
             <FlatList 
                 data={data}
                 style={styles.lista}
                 renderItem={({item})=>
-                    <View style={styles.card}>
-                        <Image 
-                            source={{uri: item.photo_url}}
-                            style={styles.img}
-                            resizeMode='contain'
-                        />
-                        <Text style={styles.modelo}>{item.model}</Text>
-                    </View>
+                    <Pressable onPress={()=> goToCarCard(item)}>
+                        <View style={styles.card}>
+                            <Image 
+                                source={{uri: item.photo_url}}
+                                style={styles.img}
+                                resizeMode='contain'
+                                />
+                            <Text style={styles.modelo}>{item.model}</Text>
+                        </View>
+                    </Pressable>
                 }
             />
         </View>
@@ -28,6 +34,7 @@ export default CarList
 const styles = StyleSheet.create({
     container:{
         width:'100%',
+        height:'80%',
         flex:1,
         alignItems:'center',
         justifyContent: 'center'
