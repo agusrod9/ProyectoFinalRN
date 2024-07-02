@@ -1,13 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+import WishListSelector from "../components/WishListSelector"
 
-const WishListSelectionScreen = () => {
+const WishListSelectionScreen = ({navigation}) => {
   return (
-    <View>
-      <Text>WishListSelectionScreen</Text>
-    </View>
+    <WishListSelector navigation={navigation}/>
   )
 }
 
 export default WishListSelectionScreen
-
-const styles = StyleSheet.create({})

@@ -1,7 +1,7 @@
 import { View , StyleSheet, FlatList, Text, Image, Pressable} from 'react-native'
-import data from '../data/test_cars.json'
+import { Color } from '../global/myColors'
 
-const CarList = ({navigation}) => {
+const CarList = ({navigation, data}) => {
     
 const goToCarCard = (item) =>{
     navigation.navigate('CarCard', item )
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         height:'80%',
         flex:1,
         alignItems:'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     lista:{
         width:'100%',
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
         alignContent:'space-evenly',
     },
     card:{
+        backgroundColor:Color.cardBG,
         flex:1,
         width:'90%',
         height:150,
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
         //resizeMode:'contain' -> Deprecado, lo paso a prop
     },
     modelo:{
+        color:'white',
         fontSize:16,
         textAlign:'center'
     }

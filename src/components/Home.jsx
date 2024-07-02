@@ -13,7 +13,7 @@ const goToMyCollection = () =>{
 }
 
 const goToMyWishList = () => {
-  navigation.navigate('WishListScreen')
+  navigation.navigate('WishListSelectionScreen')
 }
   return (
     <View style={styles.container}>

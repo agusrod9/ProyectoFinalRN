@@ -4,7 +4,10 @@ import Camera from '../components/Camera'
 
 const AddCarScreen = ({navigation}) => {
   return (
+    <View>
+      <Text></Text>
       <Camera />
+    </View>
   )
 }
 
