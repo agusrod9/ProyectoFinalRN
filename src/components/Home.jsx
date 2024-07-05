@@ -17,17 +17,26 @@ const goToMyWishList = () => {
 }
   return (
     <View style={styles.container}>
-      <Pressable style={styles.icon} onPress={()=>goToAddCar()}>
+      <Pressable 
+        style={({pressed}) => [styles.icon, {opacity: pressed ? 0.6 : 1}]}
+        onPress={()=>goToAddCar()}
+      >
         <SimpleLineIcons name="camera" size={90} color={Color.homeIcons}/>
         <Text style={styles.iconText}>Agregar auto</Text>
       </Pressable>
 
-      <Pressable style={styles.icon} onPress={()=>goToMyCollection()}>
+      <Pressable 
+        style={({pressed}) => [styles.icon, {opacity: pressed ? 0.6 : 1}]}
+        onPress={()=>goToMyCollection()}
+      >
         <MaterialIcons name="grid-view" size={90} color={Color.homeIcons}/>
         <Text style={styles.iconText}>Ver colección</Text>
       </Pressable>
 
-      <Pressable style={styles.icon} onPress={()=>goToMyWishList()}>
+      <Pressable 
+        style={({pressed}) => [styles.icon, {opacity: pressed ? 0.6 : 1}]}
+        onPress={()=>goToMyWishList()}
+      >
         <MaterialCommunityIcons name="cart-heart" size={90} color={Color.homeIcons}/>
         <Text style={styles.iconText}>Deseos</Text>
       </Pressable>

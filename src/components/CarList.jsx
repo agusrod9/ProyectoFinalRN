@@ -1,6 +1,7 @@
 import { View , StyleSheet, FlatList, Text, Image, Pressable} from 'react-native'
 import { Color } from '../global/myColors'
 
+
 const CarList = ({navigation, data}) => {
     
 const goToCarCard = (item) =>{
@@ -13,15 +14,18 @@ const goToCarCard = (item) =>{
                 data={data}
                 style={styles.lista}
                 renderItem={({item})=>
-                    <Pressable onPress={()=> goToCarCard(item)}>
-                        <View style={styles.card}>
-                            <Image 
-                                source={{uri: item.photo_url}}
-                                style={styles.img}
-                                resizeMode='contain'
-                                />
-                            <Text style={styles.modelo}>{item.model}</Text>
-                        </View>
+                    <Pressable 
+                        style={({pressed}) => [{opacity: pressed ? 0.6 : 1}]}
+                        onPress={()=> goToCarCard(item)}
+                    >
+                            <View style={styles.card}>
+                                <Image 
+                                    source={{uri: item.photo_url}}
+                                    style={styles.img}
+                                    resizeMode='contain'
+                                    />
+                                <Text style={styles.modelo}>{item.model}</Text>
+                            </View>
                     </Pressable>
                 }
             />

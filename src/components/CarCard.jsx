@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View} from 'react-native'
 import { Card, Button, Icon } from '@rneui/themed'
 import { Color } from '../global/myColors'
 

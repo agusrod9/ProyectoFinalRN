@@ -10,7 +10,8 @@ export default function App() {
   const [fontsLoaded, fontError] = useFonts({
     gruppo: require('./assets/fonts/Gruppo-Regular.ttf'),
     lilita: require('./assets/fonts/LilitaOne-Regular.ttf'),
-    play: require('./assets/fonts/Play-Regular.ttf')
+    play: require('./assets/fonts/Play-Regular.ttf'),
+    playBold: require('./assets/fonts/Play-Bold.ttf')
   })
   
   

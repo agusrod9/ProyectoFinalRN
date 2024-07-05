@@ -1,5 +1,4 @@
 import { StyleSheet, View, Pressable, Text } from 'react-native'
-//import { Button} from '@rneui/themed'
 import { Color } from '../global/myColors'
 
 const WishListSelector = ({navigation}) => {
@@ -15,14 +14,14 @@ const goToAllCarsScreen = () => {
   return (
     <View style={styles.container}>
       <Pressable 
-        style={styles.btn}
+        style={({pressed}) => [styles.btn, {opacity: pressed ? 0.6 : 1}]}
         onPress={()=> goToWishList()}
       >
           <Text style={styles.txt}>Mis deseados</Text>
       </Pressable>
 
       <Pressable 
-        style={styles.btn}
+        style={({pressed}) => [styles.btn, {opacity: pressed ? 0.6 : 1}]}
         onPress={()=> goToAllCarsScreen()}
       >
         <Text style={styles.txt}>Ver todos los modelos</Text>

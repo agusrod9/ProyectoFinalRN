@@ -4,7 +4,6 @@ import WishListScreen from '../screens/WishListScreen'
 import AddCarScreen from '../screens/AddCarScreen'
 import MyCollectionScreen from '../screens/MyCollectionScreen'
 import CarDetailScreen from '../screens/CarDetailScreen'
-import CameraScreen from '../screens/CameraScreen'
 import WishListSelectionScreen from '../screens/WishListSelectionScreen'
 import AllCarsScreen from '../screens/AllCarsScreen'
 
@@ -66,15 +65,6 @@ const MainStackNavigator = () => {
         options={
           {
             headerTitle:'Detalle'
-          }
-        }
-      />
-      <Stack.Screen 
-        name='Camera' 
-        component={CameraScreen}
-        options={
-          {
-            headerTitle:'Cámara'
           }
         }
       />

@@ -24,12 +24,6 @@ const Filters = () => {
         data={data} 
         save="value"
       />
-      <SelectList 
-        placeholder='Color'
-        setSelected={(val) => setSelected(val)} 
-        data={data} 
-        save="value"
-      />
       <SelectList
         placeholder='Colección'
         setSelected={(val) => setSelected(val)} 
