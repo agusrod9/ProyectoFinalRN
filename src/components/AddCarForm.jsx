@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { StyleSheet, Text, TextInput, View, Image, Pressable } from 'react-native'
 import { Color } from '../global/myColors'
+
 const AddCarForm = () => {
 
   const [model, setModel] = useState('')

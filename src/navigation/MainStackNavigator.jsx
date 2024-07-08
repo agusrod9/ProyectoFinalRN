@@ -20,7 +20,7 @@ const MainStackNavigator = () => {
         component={HomeScreen}
         options={{
           headerShown: false,
-          headerTitle:'Inicio'
+          headerTitle:'Inicio' //para visualizarlo en las siguientes pantallas al volver
         }}
       />
       <Stack.Screen 

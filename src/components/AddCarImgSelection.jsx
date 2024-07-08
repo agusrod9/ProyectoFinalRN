@@ -1,14 +1,37 @@
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import { useState } from 'react'
 import { Color } from '../global/myColors'
+import * as ImagePicker from 'expo-image-picker'
 
 const AddCarImgSelection = () => {
 
   const [image, setImage] = useState(null)
   const verifyCameraPermission = async () => {
-
+    
+    const {status} = await ImagePicker.requestCameraPermissionsAsync()
+    if (!status){
+      return false
+    }
+    return true
   }
   const pickImage = async () => {
+    const permissionsGranted = await verifyCameraPermission()
+
+    if (permissionsGranted){
+      let result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 1,
+        base64: true,
+      })
+      
+      
+      if (!result.canceled) {
+        setImage(`data:image/jpeg;base64,${result.assets[0].base64}`);
+      }
+      
+    }
 
   }
   const confirmImage = () => {
@@ -21,9 +44,11 @@ const AddCarImgSelection = () => {
         <Image 
           source={{uri: image}} 
           style={styles.img}
+          resizeMode='contain'
         />
         <Pressable
           style={({pressed}) => [styles.pressable, {opacity: pressed ? 0.6 : 1}]}
+          onPress={pickImage}
         >
             <Text style={styles.txtPressable}>Tomar nueva foto</Text>
         </Pressable>
@@ -37,6 +62,7 @@ const AddCarImgSelection = () => {
         />
         <Pressable
         style={({pressed}) => [styles.pressable, {opacity: pressed ? 0.6 : 1}]}
+        onPress={pickImage}
         >
         <Text style={styles.txtPressable}>Agregar foto</Text>
       </Pressable>

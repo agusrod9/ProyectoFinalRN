@@ -14,14 +14,14 @@ const goToAllCarsScreen = () => {
   return (
     <View style={styles.container}>
       <Pressable 
-        style={({pressed}) => [styles.btn, {opacity: pressed ? 0.6 : 1}]}
+        style={({pressed}) => [styles.pressable, {opacity: pressed ? 0.6 : 1}]}
         onPress={()=> goToWishList()}
       >
           <Text style={styles.txt}>Mis deseados</Text>
       </Pressable>
 
       <Pressable 
-        style={({pressed}) => [styles.btn, {opacity: pressed ? 0.6 : 1}]}
+        style={({pressed}) => [styles.pressable, {opacity: pressed ? 0.6 : 1}]}
         onPress={()=> goToAllCarsScreen()}
       >
         <Text style={styles.txt}>Ver todos los modelos</Text>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     flexDirection:'column',
     
   },
-  btn: {
+  pressable: {
     margin:0,
     padding:0,
     backgroundColor: Color.cardBG,
