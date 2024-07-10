@@ -1,7 +1,6 @@
 import { View , StyleSheet, FlatList, Text, Image, Pressable} from 'react-native'
 import { Color } from '../global/myColors'
 
-
 const CarList = ({navigation, data}) => {
     
 const goToCarCard = (item) =>{

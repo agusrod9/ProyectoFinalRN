@@ -1,34 +1,19 @@
 import { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { SelectList } from 'react-native-dropdown-select-list'
+import { StyleSheet, TextInput, View, Pressable } from 'react-native'
+import { Color } from '../global/myColors'
+import { FontAwesome5 } from "@expo/vector-icons";
 
-const Filters = () => {
+const Filters = ({keyword, setKeyWord}) => {
 
-  const [selected, setSelected] = useState([])
-
-  const data = [
-    {key:'1', value:'Mobiles', disabled:true},
-    {key:'2', value:'Appliances'},
-    {key:'3', value:'Cameras'},
-    {key:'4', value:'Computers', disabled:true},
-    {key:'5', value:'Vegetables'},
-    {key:'6', value:'Diary Products'},
-    {key:'7', value:'Drinks'},
-  ]
-
+  //const [keyword, setKeyWord] = useState('')
   return (
     <View style={styles.container}>
-      <SelectList 
-        placeholder='Modelo'
-        setSelected={(val) => setSelected(val)} 
-        data={data} 
-        save="value"
-      />
-      <SelectList
-        placeholder='Colección'
-        setSelected={(val) => setSelected(val)} 
-        data={data} 
-        save="value"
+      <TextInput
+        style={styles.input} 
+        placeholder='Buscar modelo...'
+        placeholderTextColor='white'
+        value={keyword} 
+        onChangeText={setKeyWord}
       />
     </View>
   )
@@ -40,6 +25,19 @@ const styles = StyleSheet.create({
   container:{
     flexDirection:'row',
     width:'100%',
-    justifyContent:'center'
+    height:60,
+    justifyContent:'center',
+    backgroundColor: Color.cardBG,
+    alignItems:'center'
+  },
+  input:{
+    height:40,
+    width:'79%',
+    borderWidth:1,
+    borderColor:'black',
+    justifyContent:'center',
+    alignContent:'center',
+    color:'white',
+    placeholderTextColor:'white'
   }
 })
