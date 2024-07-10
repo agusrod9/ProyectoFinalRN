@@ -1,11 +1,8 @@
-import { useState } from 'react'
-import { StyleSheet, TextInput, View, Pressable } from 'react-native'
+import { StyleSheet, TextInput, View } from 'react-native'
 import { Color } from '../global/myColors'
-import { FontAwesome5 } from "@expo/vector-icons";
 
 const Filters = ({keyword, setKeyWord}) => {
 
-  //const [keyword, setKeyWord] = useState('')
   return (
     <View style={styles.container}>
       <TextInput
