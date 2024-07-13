@@ -14,13 +14,15 @@ const MainStackNavigator = () => {
 
   return (
   
-    <Stack.Navigator initialRouteName='Home'>
+    <Stack.Navigator 
+      initialRouteName='Home'
+    >
       <Stack.Screen 
         name='Home' 
         component={HomeScreen}
         options={{
           headerShown: false,
-          headerTitle:'Inicio' //para visualizarlo en las siguientes pantallas al volver
+          headerTitle:'Inicio', //para visualizarlo en las siguientes pantallas al volver 
         }}
       />
       <Stack.Screen 
@@ -28,7 +30,7 @@ const MainStackNavigator = () => {
         component={WishListScreen}
         options={
           {
-            headerTitle:'Deseados'
+            headerTitle:'Deseados',
           }
         }
       />
@@ -46,7 +48,8 @@ const MainStackNavigator = () => {
         component={AddCarScreen}
         options={
           {
-            headerTitle:'Nuevo auto'
+            headerBackButtonMenuEnabled:false,
+            headerTitle:'Nuevo  auto'
           }
         }
       />
@@ -55,6 +58,7 @@ const MainStackNavigator = () => {
         component={MyCollectionScreen}
         options={
           {
+
             headerTitle:'Colección'
           }
         }

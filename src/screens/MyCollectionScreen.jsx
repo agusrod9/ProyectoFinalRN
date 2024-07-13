@@ -1,6 +1,5 @@
 import { StyleSheet,  View } from 'react-native'
 import Filters from '../components/Filters'
-import TabNav from '../components/TabNav'
 import CarList from '../components/CarList'
 import data from '../data/test_cars.json'
 import { Color } from '../global/myColors'
@@ -23,7 +22,6 @@ const MyCollectionScreen = ({navigation}) => {
     <View style={styles.container}>
       <Filters keyword={keyword} setKeyWord={setKeyword}/>
       <CarList navigation={navigation} data={filteredCars}/>
-      <TabNav/>
     </View>
   )
 }
