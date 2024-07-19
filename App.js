@@ -2,8 +2,8 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import { Color } from './src/global/myColors';
 import { useFonts } from 'expo-font';
 import Navigator from './src/navigation/Navigator';
-
-
+import { Provider } from 'react-redux';
+import store from './src/store';
 
 export default function App() {
 
@@ -20,7 +20,10 @@ export default function App() {
   }
   return (
     <SafeAreaView style={styles.container}> 
-      <Navigator />
+      <Provider store={store}>
+        <Navigator />
+      </Provider>
+      
     </SafeAreaView>
   );
 }
@@ -29,7 +32,5 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Color.appBG,
     flex: 1,
-    //alignItems: 'center',
-    //justifyContent: 'center',
   }
 });

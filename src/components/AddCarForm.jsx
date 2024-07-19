@@ -9,6 +9,15 @@ const AddCarForm = () => {
   const [seriesNumber, setSeriesNumber] = useState('')
   const [year, setYear] = useState('')
   
+  const handleAddCar = () =>{
+    
+  }
+  const car = {
+    model: "",
+    series: "",
+    seriesNumber:"",
+    year:""
+  }
 
   return (
     <View style={styles.container}>
@@ -42,6 +51,7 @@ const AddCarForm = () => {
       />
       <Pressable
         style={({pressed}) => [styles.pressable, {opacity: pressed ? 0.6 : 1}]}
+        onPress={()=>{handleAddCar(car)}}
         >
         <Text style={styles.txtPressable}>Guardar</Text>
       </Pressable>

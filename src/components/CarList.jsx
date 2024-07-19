@@ -12,6 +12,7 @@ const goToCarCard = (item) =>{
             <FlatList 
                 data={data}
                 style={styles.lista}
+                showsVerticalScrollIndicator={false}
                 renderItem={({item})=>
                     <Pressable 
                         style={({pressed}) => [{opacity: pressed ? 0.6 : 1}]}

@@ -1,3 +1,3 @@
-export const baseUrl = 'https://apphotwheelscoder-default-rtdb.firebaseio.com/'
+export const dbUrl = 'https://apphotwheelscoder-default-rtdb.firebaseio.com/'
 
 

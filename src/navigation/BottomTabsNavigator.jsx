@@ -25,7 +25,7 @@ const BottomTabsNavigator = () => {
             options={{ tabBarLabel:'Inicio',
                        tabBarIcon: ({focused}) => {
                           return(
-                              <MaterialCommunityIcons name="garage" size={50} color={ focused ? Color.homeIconsText : 'white'} />
+                              <MaterialCommunityIcons name="garage" size={focused ? 55 : 50} color={ focused ? Color.homeIconsText : 'white'} />
                           )
                         }
                       }
@@ -37,7 +37,7 @@ const BottomTabsNavigator = () => {
             options={{ tabBarLabel:'Agregar Auto',
                        tabBarIcon: ({focused}) => {
                         return(
-                          <SimpleLineIcons name="camera" size={40} color={ focused ? Color.homeIconsText : 'white'}/>
+                          <SimpleLineIcons name="camera" size={focused ? 45 : 40} color={ focused ? Color.homeIconsText : 'white'}/>
                         )
                       }
                     }
@@ -49,7 +49,7 @@ const BottomTabsNavigator = () => {
             options={{ tabBarLabel:'Deseos',
                        tabBarIcon: ({focused}) => {
                         return(
-                          <MaterialCommunityIcons name="cart-heart" size={40} color={focused ? Color.homeIconsText : 'white'}/>
+                          <MaterialCommunityIcons name="cart-heart" size={focused ? 45 : 40} color={focused ? Color.homeIconsText : 'white'}/>
                         )
                       }}}
         /> 

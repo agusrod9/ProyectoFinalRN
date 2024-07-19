@@ -3,20 +3,25 @@ import { Card, Button, Icon } from '@rneui/themed'
 import { Color } from '../global/myColors'
 
 const CarCard = ({navigation, route}) => {
-  const {model, photo_url, series, series_num} = route.params
+  const {model, photo_url, series, series_num, year} = route.params
   return (
     <View style={styles.container}>
         <Card containerStyle={styles.card}>
           <Card.Title style={styles.title}>{model}</Card.Title>
           <Card.Image
-            style={{ padding: 0 }}
+            style={styles.carImg}
             source={{uri:photo_url}}
+            resizeMode='contain'
           />
           <Text style={{ marginTop: 10 }}>
             Serie: {series}
           </Text>
+          <Text>
+            Número: {series_num}
+          </Text>
           <Text style={{marginBottom:10}}>
-            Número: {series_num}</Text>
+            Año: {year}
+          </Text>
           <Button
             icon={
               <Icon
@@ -53,5 +58,10 @@ const styles = StyleSheet.create({
   title:{
     color:'black',
     fontSize:20
+  },
+  carImg:{
+    padding: 0,
+    height:400,
+    width:'100%'
   }
 })
