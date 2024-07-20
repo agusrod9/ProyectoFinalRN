@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { StyleSheet, Text, TextInput, View, Image, Pressable } from 'react-native'
+import { StyleSheet, Text, TextInput, View, Pressable } from 'react-native'
 import { Color } from '../global/myColors'
+import { useDispatch } from 'react-redux'
+import { addCarToMyCollection } from '../features/carSlice'
 
 const AddCarForm = () => {
 
@@ -8,15 +10,21 @@ const AddCarForm = () => {
   const [series, setSeries] = useState('')
   const [seriesNumber, setSeriesNumber] = useState('')
   const [year, setYear] = useState('')
+  const dispatch = useDispatch()
   
-  const handleAddCar = () =>{
+  const handleAddCar = (car) =>{
+    dispatch(addCarToMyCollection)
     
   }
+
+
   const car = {
-    model: "",
-    series: "",
-    seriesNumber:"",
-    year:""
+        toy_num: '',
+        model: '',
+        series: '',
+        series_num: '',
+        photo_url: '',
+        year: ''
   }
 
   return (

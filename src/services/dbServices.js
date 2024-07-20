@@ -3,6 +3,7 @@ import { dbUrl } from "../database/realtimeDataBase";
 
 
 export const myHotWheelsApi = createApi({
+    reducerPath: "dbApi",
     baseQuery: fetchBaseQuery({baseUrl:dbUrl}),
     endpoints: (builder)=>({
         getCars: builder.query({

@@ -1,13 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const carSlice = createSlice({
-    name: 'carSlice',
+    name: 'car',
     initialState: {
-        value: 0
+        toy_num: '',
+        model: '',
+        series: '',
+        series_num: '',
+        photo_url: '',
+        year: ''
     },
     reducers:{
-        increment: (state)=>{
-            state.value +=1;  //el estado que recibe en el ejemplo del profe es un numero, y acá le sumaría uno.
+        addCarToMyCollection: (newCar)=>{
+            //acá va la lógica de agregar el auto a la colección
         },
         decrement: (state)=>{
             state.value -=1;
@@ -21,5 +26,5 @@ export const carSlice = createSlice({
     }
 })
 
-export const {increment, decrement, incrementByAmmount, reset} = carSlice.actions;
+export const {addCarToMyCollection, decrement, incrementByAmmount, reset} = carSlice.actions;
 export default carSlice.reducer

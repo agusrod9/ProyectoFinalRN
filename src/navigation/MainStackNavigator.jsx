@@ -6,6 +6,8 @@ import MyCollectionScreen from '../screens/MyCollectionScreen'
 import CarDetailScreen from '../screens/CarDetailScreen'
 import WishListSelectionScreen from '../screens/WishListSelectionScreen'
 import AllCarsScreen from '../screens/AllCarsScreen'
+import LoginScreen from '../screens/LoginScreen'
+import SignupScreen from '../screens/SignupScreen'
 
 
 const MainStackNavigator = () => {
