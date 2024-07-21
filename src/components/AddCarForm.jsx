@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { StyleSheet, Text, TextInput, View, Pressable } from 'react-native'
 import { Color } from '../global/myColors'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addCarToMyCollection } from '../features/carSlice'
+import { usePostCarImageMutation } from '../services/dbServices'
 
 const AddCarForm = () => {
 
@@ -11,20 +12,22 @@ const AddCarForm = () => {
   const [seriesNumber, setSeriesNumber] = useState('')
   const [year, setYear] = useState('')
   const dispatch = useDispatch()
+  const [triggerPostCarImg, result] = usePostCarImageMutation()
+  const {localId} = useSelector((state) => state.auth.value)
+  const {image} = usePostCarImageMutation((state)=> state.car.value)
   
   const handleAddCar = (car) =>{
     dispatch(addCarToMyCollection)
-    
+    triggerPostCarImg({image,localId})
   }
-
 
   const car = {
         toy_num: '',
-        model: '',
-        series: '',
-        series_num: '',
+        model: model,
+        series: series,
+        series_num: seriesNumber,
         photo_url: '',
-        year: ''
+        year: year
   }
 
   return (

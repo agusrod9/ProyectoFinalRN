@@ -3,11 +3,12 @@ import { useState } from 'react'
 import { Color } from '../global/myColors'
 import * as ImagePicker from 'expo-image-picker'
 import { useDispatch } from 'react-redux'
+import { addCarImg } from '../features/carSlice'
 
 const AddCarImgSelection = () => {
 
   const [image, setImage] = useState(null)
-  //const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const verifyCameraPermission = async () => {
     
     const {status} = await ImagePicker.requestCameraPermissionsAsync()
@@ -24,25 +25,20 @@ const AddCarImgSelection = () => {
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
         aspect: [1, 1],
-        quality: 1,
+        quality: 0.5,
         base64: true,
       })
       
       
       if (!result.canceled) {
         setImage(`data:image/jpeg;base64,${result.assets[0].base64}`);
+        dispatch(addCarImg(image))
       }
       
     }
 
   }
-  const confirmImage = () => {
-    //dispatch(setImage(image))
-    //navigation.goBack()
-  }
-
-
-
+  
   return (
     <View style={styles.container}>
       {image ?

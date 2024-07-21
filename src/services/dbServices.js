@@ -12,8 +12,20 @@ export const myHotWheelsApi = createApi({
                 const transformedResponse = Object.values(res)
                 return transformedResponse
             }
+        }),
+        getCarImg: builder.query({
+            query: (localId) => `carImages/${localId}.json`
+        }),
+        postCarImage: builder.mutation({
+            query: ({image, localId}) => ({
+                url: `carImages/${localId}.json`,
+                method: 'PUT',
+                body:{
+                    image: image
+                }
+            })
         })
     })
 })
 
-export const {useGetCarsQuery} = myHotWheelsApi;
+export const {useGetCarsQuery, useGetCarImgQuery, usePostCarImageMutation} = myHotWheelsApi;

@@ -14,17 +14,11 @@ export const carSlice = createSlice({
         addCarToMyCollection: (newCar)=>{
             //acá va la lógica de agregar el auto a la colección
         },
-        decrement: (state)=>{
-            state.value -=1;
-        },
-        incrementByAmmount: (state, action)=>{
-            state.value += action.payload
-        },
-        reset:(state)=>{
-            state.value=0
+        addCarImg:(state, {payload})=>{
+            state.value.addCarImg = payload;
         }
     }
 })
 
-export const {addCarToMyCollection, decrement, incrementByAmmount, reset} = carSlice.actions;
+export const {addCarToMyCollection, addCarImg} = carSlice.actions;
 export default carSlice.reducer
