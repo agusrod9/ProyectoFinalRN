@@ -5,6 +5,7 @@ import { Color } from "../global/myColors";
 import { useSignInMutation } from "../services/authServices";
 import { useDispatch } from "react-redux";
 import { setUser } from "../features/userSlice";
+import { insertSession } from "../persistence";
 
 
 const LoginScreen = ({ navigation }) => {
@@ -15,15 +16,21 @@ const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if(result.isSuccess){
-      dispatch(setUser({
+    if(result?.data && result.isSuccess){
+      insertSession({
         email: result.data.email,
-        idToken: result.data.idToken,
-        localId: result.data.localId
-      }))
+        localId: result.data.localId,
+        token: result.data.idToken
+      }).then((response)=>{
+        dispatch(setUser({
+          email: result.data.email,
+          token: result.data.idToken,
+          localId: result.data.localId
+        }))
+      }).catch(error =>{
+        //display Modal
+      })
     }
-
-  
 }, [result])
 
 

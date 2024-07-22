@@ -3,15 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 export const carSlice = createSlice({
     name: 'car',
     initialState: {
-        toy_num: '',
-        model: '',
-        series: '',
-        series_num: '',
-        photo_url: '',
-        year: ''
+        value:{
+            toy_num: '',
+            model: '',
+            series: '',
+            series_num: '',
+            photo_url: '',
+            year: ''
+        }
     },
     reducers:{
-        addCarToMyCollection: (newCar)=>{
+        addCarToMyCollection: ({payload})=>{
             //acá va la lógica de agregar el auto a la colección
         },
         addCarImg:(state, {payload})=>{

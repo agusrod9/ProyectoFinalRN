@@ -5,6 +5,7 @@ import WishListScreen from '../screens/WishListScreen'
 import MainStackNavigator from './MainStackNavigator'
 import { Color } from '../global/myColors'
 import { MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
+import ProfileScreen from '../screens/ProfileScreen'
 
 
 const tabs = createBottomTabNavigator()
@@ -50,6 +51,16 @@ const BottomTabsNavigator = () => {
                        tabBarIcon: ({focused}) => {
                         return(
                           <MaterialCommunityIcons name="cart-heart" size={focused ? 45 : 40} color={focused ? Color.homeIconsText : 'white'}/>
+                        )
+                      }}}
+        /> 
+        <tabs.Screen 
+            name='LogOut' 
+            component={ProfileScreen} 
+            options={{ tabBarLabel:'Perfil',
+                       tabBarIcon: ({focused}) => {
+                        return(
+                          <SimpleLineIcons name="user" size={focused ? 40 : 35} color={focused ? Color.homeIconsText : 'white'} />
                         )
                       }}}
         /> 

@@ -4,8 +4,21 @@ import { useFonts } from 'expo-font';
 import Navigator from './src/navigation/Navigator';
 import { Provider } from 'react-redux';
 import store from './src/store';
+import { initSQLiteDB, truncateSessionTable } from './src/persistence';
+
+
+(async ()=> {
+
+    try {
+      const response = await initSQLiteDB()
+    } catch (error) {
+
+    }
+    })()
 
 export default function App() {
+
+  
 
   const [fontsLoaded, fontError] = useFonts({
     gruppo: require('./assets/fonts/Gruppo-Regular.ttf'),
