@@ -13,6 +13,20 @@ export const myHotWheelsApi = createApi({
                 return transformedResponse
             }
         }),
+        getCollectedCarsByUser: builder.query({
+            query: (user)=> `usrCollectedCars.json?orderBy='user'&equalTo='${user}`,
+            transformResponse: (res)=>{
+                const transformedResponse = Object.values[res]
+                return transformedResponse
+            }
+        }),
+        getWishedCarsByUser: builder.query({
+            query: (user)=> `usrWishedCars.json?orderBy='user'&equalTo='${user}`,
+            transformResponse: (res)=>{
+                const transformedResponse = Object.values[res]
+                return transformedResponse
+            }
+        }),
         getCarImg: builder.query({
             query: (localId) => `carImages/${localId}.json`
         }),
@@ -24,8 +38,30 @@ export const myHotWheelsApi = createApi({
                     image: image
                 }
             })
+        }),
+        postNewCollectedCar: builder.mutation({
+            query: ({...car})=>({
+                url:'usrCollectedCars.json',
+                method:'POST',
+                body: car
+            })
+        }),
+        postNewWishedCar: builder.mutation({
+            query: ({...car})=>({
+                url:'usrWishedCars.json',
+                method:'POST',
+                body: car
+            })
         })
+        
     })
 })
 
-export const {useGetCarsQuery, useGetCarImgQuery, usePostCarImageMutation} = myHotWheelsApi;
+export const{   useGetCarsQuery,
+                useGetCarImgQuery, 
+                usePostCarImageMutation, 
+                useGetCollectedCarsByUserQuery,
+                useGetWishedCarsByUserQuery,
+                usePostNewCollectedCarMutation,
+                usePostNewWishedCarMutation
+            } = myHotWheelsApi;

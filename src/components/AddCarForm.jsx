@@ -3,31 +3,51 @@ import { StyleSheet, Text, TextInput, View, Pressable } from 'react-native'
 import { Color } from '../global/myColors'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCarToMyCollection } from '../features/carSlice'
-import { usePostCarImageMutation } from '../services/dbServices'
+import { usePostCarImageMutation, usePostNewCollectedCarMutation } from '../services/dbServices'
 
-const AddCarForm = () => {
+const AddCarForm = ({setImage}) => {
 
   const [model, setModel] = useState('')
   const [series, setSeries] = useState('')
   const [seriesNumber, setSeriesNumber] = useState('')
   const [year, setYear] = useState('')
   const dispatch = useDispatch()
-  const [triggerPostCarImg, result] = usePostCarImageMutation()
+  //const [triggerPostCarImg, result] = usePostCarImageMutation()
+  const [triggerPostNewCar, result] = usePostNewCollectedCarMutation()
   const {localId} = useSelector((state) => state.auth.value)
   const {image} = usePostCarImageMutation((state)=> state.car.value)
-  
-  const handleAddCar = (car) =>{
-    dispatch(addCarToMyCollection)
-    triggerPostCarImg({image,localId})
+  const {user} = useSelector((state) => state.auth.value)
+
+  const clearScreen = () =>{
+    setModel(null),
+    setSeries(null),
+    setSeriesNumber(null),
+    setYear(null)
+  }
+  const handleAddCar = (model, series, seriesNumber, year) =>{
+    //dispatch(addCarToMyCollection)
+    //triggerPostCarImg({image,localId})
+    const newCar = {
+      model: model,
+      series: series,
+      series_num : seriesNumber,
+      year: year,
+      user: user,
+      img: 'img'
+    }
+
+    triggerPostNewCar(newCar)
+    clearScreen()
   }
 
   const car = {
-        toy_num: '',
-        model: model,
-        series: series,
-        series_num: seriesNumber,
-        photo_url: '',
-        year: year
+        toy_num: null,
+        model: null,
+        series: null,
+        series_num: null,
+        photo_url: null,
+        year: null,
+        user: null
   }
 
   return (
@@ -62,7 +82,7 @@ const AddCarForm = () => {
       />
       <Pressable
         style={({pressed}) => [styles.pressable, {opacity: pressed ? 0.6 : 1}]}
-        onPress={()=>{handleAddCar(car)}}
+        onPress={()=>{handleAddCar(model, series, seriesNumber, year)}}
         >
         <Text style={styles.txtPressable}>Guardar</Text>
       </Pressable>

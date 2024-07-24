@@ -1,22 +1,22 @@
 import { StyleSheet, View } from 'react-native'
 import Filters from '../components/Filters'
 import CarList from '../components/CarList'
-import data from '../data/all_cars.json'
 import { Color } from '../global/myColors'
 import { useState, useEffect } from 'react'
-
+import { useGetCarsQuery } from '../services/dbServices'
 
 const AllCarsScreen = ({navigation}) => {
-
+  const {data, isLoading} = useGetCarsQuery()
   const [keyword, setKeyword] = useState('')
   const [filteredCars, setFilteredCars] = useState([])
   
   useEffect(()=>{
-    const filtered = data.filter(
-      (car) => car.model.toLocaleString().toLocaleLowerCase().includes(keyword.toLocaleLowerCase()));
+    if(!isLoading){
+      const filtered = data.filter(
+        (car) => car.model.toLocaleString().toLocaleLowerCase().includes(keyword.toLocaleLowerCase()));
       setFilteredCars(filtered)
-
-    }, [keyword, setKeyword])
+    }
+    }, [keyword, setKeyword, data, isLoading])
   return (
     <View style={styles.container}>
       <Filters keyword={keyword} setKeyWord={setKeyword}/>

@@ -1,31 +1,32 @@
-import { StyleSheet,  View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import Filters from '../components/Filters'
 import CarList from '../components/CarList'
-//import data from '../data/test_cars.json'
 import { Color } from '../global/myColors'
 import { useEffect, useState } from 'react'
-import { useGetCarsQuery } from '../services/dbServices'
-
+import { useGetCarsQuery, useGetCollectedCarsByUserQuery } from '../services/dbServices'
+import EmptyCollection from '../components/EmptyCollection'
+import { useSelector } from 'react-redux'
 
 const MyCollectionScreen = ({navigation}) => {
   const {data, isLoading} = useGetCarsQuery()
-  
+  const {user} = useSelector((state) => state.auth.value)
   const [keyword, setKeyword] = useState('')
   const [filteredCars, setFilteredCars] = useState([])
-  
+  const [cantidadAutos, setCantidadAutos] = useState(0)
+ 
   useEffect(()=>{
-
     if(!isLoading){
+      setCantidadAutos (data.length)
       const filtered = data.filter(
         (car) => car.model.toLocaleString().toLocaleLowerCase().includes(keyword.toLocaleLowerCase()));
-        setFilteredCars(filtered)
-  
-      }
+      setFilteredCars(filtered)
+    }
     }, [keyword, setKeyword, data, isLoading])
+
   return (
     <View style={styles.container}>
       <Filters keyword={keyword} setKeyWord={setKeyword}/>
-      <CarList navigation={navigation} data={filteredCars}/>
+      { cantidadAutos !=0 || isLoading ? <CarList navigation={navigation} data={filteredCars}/> : <EmptyCollection navigation={navigation} user={user}/>}
     </View>
   )
 }
