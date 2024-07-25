@@ -3,19 +3,22 @@ import Filters from '../components/Filters'
 import CarList from '../components/CarList'
 import { Color } from '../global/myColors'
 import { useEffect, useState } from 'react'
-import { useGetCarsQuery, useGetCollectedCarsByUserQuery } from '../services/dbServices'
+import { useGetCollectedCarsByUserQuery } from '../services/dbServices'
 import EmptyCollection from '../components/EmptyCollection'
 import { useSelector } from 'react-redux'
 
 const MyCollectionScreen = ({navigation}) => {
-  const {data, isLoading} = useGetCarsQuery()
+
   const {user} = useSelector((state) => state.auth.value)
+  const {data, isLoading} = useGetCollectedCarsByUserQuery(user)
   const [keyword, setKeyword] = useState('')
   const [filteredCars, setFilteredCars] = useState([])
   const [cantidadAutos, setCantidadAutos] = useState(0)
- 
+
   useEffect(()=>{
+    console.log('entro al useeffect')
     if(!isLoading){
+      console.log('entro al if')
       setCantidadAutos (data.length)
       const filtered = data.filter(
         (car) => car.model.toLocaleString().toLocaleLowerCase().includes(keyword.toLocaleLowerCase()));

@@ -14,16 +14,17 @@ export const myHotWheelsApi = createApi({
             }
         }),
         getCollectedCarsByUser: builder.query({
-            query: (user)=> `usrCollectedCars.json?orderBy='user'&equalTo='${user}`,
+            query: (user) => `usrCollectedCars.json?orderBy="user"&equalTo="${user}"`,
             transformResponse: (res)=>{
-                const transformedResponse = Object.values[res]
+                const transformedResponse = Object.values(res)
+                console.log('traigoAutos')
                 return transformedResponse
             }
         }),
         getWishedCarsByUser: builder.query({
-            query: (user)=> `usrWishedCars.json?orderBy='user'&equalTo='${user}`,
-            transformResponse: (res)=>{
-                const transformedResponse = Object.values[res]
+            query: (user)=> `usrWishedCars.json?orderBy="user"&equalTo="${user}"`,
+            transformResponse: (res) => {
+                const transformedResponse = Object.values(res)
                 return transformedResponse
             }
         }),

@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { StyleSheet, Text, TextInput, View, Pressable } from 'react-native'
 import { Color } from '../global/myColors'
-import { useDispatch, useSelector } from 'react-redux'
-import { addCarToMyCollection } from '../features/carSlice'
-import { usePostCarImageMutation, usePostNewCollectedCarMutation } from '../services/dbServices'
+import { usePostNewCollectedCarMutation } from '../services/dbServices'
+import { useSelector } from 'react-redux'
 
 const AddCarForm = ({setImage}) => {
 
@@ -11,11 +10,7 @@ const AddCarForm = ({setImage}) => {
   const [series, setSeries] = useState('')
   const [seriesNumber, setSeriesNumber] = useState('')
   const [year, setYear] = useState('')
-  const dispatch = useDispatch()
-  //const [triggerPostCarImg, result] = usePostCarImageMutation()
   const [triggerPostNewCar, result] = usePostNewCollectedCarMutation()
-  const {localId} = useSelector((state) => state.auth.value)
-  const {image} = usePostCarImageMutation((state)=> state.car.value)
   const {user} = useSelector((state) => state.auth.value)
 
   const clearScreen = () =>{
@@ -25,8 +20,7 @@ const AddCarForm = ({setImage}) => {
     setYear(null)
   }
   const handleAddCar = (model, series, seriesNumber, year) =>{
-    //dispatch(addCarToMyCollection)
-    //triggerPostCarImg({image,localId})
+    //
     const newCar = {
       model: model,
       series: series,
@@ -35,20 +29,10 @@ const AddCarForm = ({setImage}) => {
       user: user,
       img: 'img'
     }
-
     triggerPostNewCar(newCar)
     clearScreen()
   }
 
-  const car = {
-        toy_num: null,
-        model: null,
-        series: null,
-        series_num: null,
-        photo_url: null,
-        year: null,
-        user: null
-  }
 
   return (
     <View style={styles.container}>
