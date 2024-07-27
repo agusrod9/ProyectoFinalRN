@@ -3,7 +3,7 @@ import Filters from '../components/Filters'
 import CarList from '../components/CarList'
 import { Color } from '../global/myColors'
 import { useState, useEffect } from 'react'
-import { useGetCarsQuery, useGetWishedCarsByUserQuery } from '../services/dbServices'
+import { useGetWishedCarsByUserQuery } from '../services/dbServices'
 import { useSelector } from 'react-redux'
 
 const WishListScreen = ({navigation}) => {
@@ -12,9 +12,11 @@ const WishListScreen = ({navigation}) => {
   const {data, isLoading} = useGetWishedCarsByUserQuery(user)
   const [keyword, setKeyword] = useState('')
   const [filteredCars, setFilteredCars] = useState([])
-  
+  const [cantidadAutos, setCantidadAutos] = useState(0)
+
   useEffect(()=>{
     if(!isLoading){
+      setCantidadAutos (data.length)
       const filtered = data.filter(
         (car) => car.model.toLocaleString().toLocaleLowerCase().includes(keyword.toLocaleLowerCase()));
       setFilteredCars(filtered)
@@ -22,7 +24,11 @@ const WishListScreen = ({navigation}) => {
     }, [keyword, setKeyword, data, isLoading])
   return (
     <View style={styles.container}>
+      { cantidadAutos !=0 || isLoading ?
       <Filters keyword={keyword} setKeyWord={setKeyword}/>
+      :
+      <></>
+      }
       <CarList navigation={navigation} data={filteredCars}/>
     </View>
   )

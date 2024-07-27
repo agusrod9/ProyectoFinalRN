@@ -102,7 +102,9 @@ const styles = StyleSheet.create({
   },
   txtInput:{
     marginLeft:'4%',
-    color:'white'
+    color:'white',
+    fontFamily: 'gruppo',
+    fontSize:20
   },
   pressable:{
     marginTop:10,
@@ -116,6 +118,7 @@ const styles = StyleSheet.create({
     borderRadius: 5
 },
 txtPressable:{
-    color:'white'
+    color:'white',
+    fontFamily:'play'
 }
 })

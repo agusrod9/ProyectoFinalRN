@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
   },
   txt:{
     fontSize:30,
-    color: Color.homeIconsText
+    color: Color.homeIconsText,
+    fontFamily:'gruppo'
   }
 })

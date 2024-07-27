@@ -32,13 +32,13 @@ const CarCard = ({navigation, route}) => {
             source={{uri:photo_url}}
             resizeMode='contain'
           />
-          <Text style={{ marginTop: 10, fontSize: 20 }}>
+          <Text style={{ marginTop: 10, fontSize: 20, fontFamily:'play' }}>
             Serie: {series}
           </Text>
-          <Text style={{ fontSize: 20 }}>
+          <Text style={{ fontSize: 20, fontFamily:'play'  }}>
             Número: {series_num}
           </Text>
-          <Text style={{marginBottom:10 , fontSize: 20}}>
+          <Text style={{marginBottom:10 , fontSize: 20, fontFamily:'play' }}>
             Año: {year}
           </Text>
           
@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
   },
   title:{
     color:'black',
-    fontSize:20
+    fontSize:30,
+    fontFamily:'gruppo'
   },
   carImg:{
     padding: 0,

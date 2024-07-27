@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     padding: 2,
     fontFamily: "Josefin",
     fontSize: 14,
-    color:'white'
+    color:'white',
+    fontFamily:'play'
   },
 });

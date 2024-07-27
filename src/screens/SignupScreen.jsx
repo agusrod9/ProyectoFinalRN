@@ -7,7 +7,6 @@ import { useSignUpMutation } from "../services/authServices";
 import { setUser } from "../features/userSlice";
 import {signUpSchema} from '../validations/signUpSchema'
 
-
 const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [errorMail, setErrorMail] = useState('');
@@ -43,6 +42,7 @@ const SignupScreen = ({ navigation }) => {
       setErrorConfirmPassword('')
       signUpSchema.validateSync({email, password, confirmPassword})
       triggerSignUp({email, password, returnSecureToken: true})
+
     } catch (error) {
         switch (error.path) {
           case "email":

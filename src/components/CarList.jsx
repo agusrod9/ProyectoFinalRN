@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
     },
     modelo:{
         color:'white',
-        fontSize:16,
-        textAlign:'center'
+        fontSize:20,
+        textAlign:'center',
+        fontFamily:'gruppo'
     }
 })

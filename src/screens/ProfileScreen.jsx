@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     txtPressable:{
-        color:'white'
+        color:'white',
+        fontFamily:'play' 
     }
 })

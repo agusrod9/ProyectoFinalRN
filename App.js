@@ -4,8 +4,12 @@ import { useFonts } from 'expo-font';
 import Navigator from './src/navigation/Navigator';
 import { Provider } from 'react-redux';
 import store from './src/store';
-import { initSQLiteDB, truncateSessionTable } from './src/persistence';
+import { initSQLiteDB } from './src/persistence';
+import { useEffect } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
 
+
+SplashScreen.preventAutoHideAsync();
 
 (async ()=> {
 
@@ -28,9 +32,16 @@ export default function App() {
   })
   
   
+  useEffect(() => {
+    if (fontsLoaded || fontError) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
+
   if (!fontsLoaded && !fontError) {
     return null;
   }
+
   return (
     <SafeAreaView style={styles.container}> 
       <Provider store={store}>

@@ -45,16 +45,19 @@ const styles = StyleSheet.create({
     text:{
         color:'white',
         fontSize:18,
-        textAlign:'center'
+        textAlign:'center',
+        fontFamily:'gruppo'
     },
     welcome:{
         color:'white',
         fontSize:28,
         textAlign:'center',
+        fontFamily:'gruppo'
     },
     welcomeName:{
         color: Color.homeIconsText,
         fontSize:28,
         textAlign:'center',
+        fontFamily:'gruppo'
     }
 })

@@ -63,6 +63,6 @@ const styles = StyleSheet.create({
     color: Color.homeIconsText,
     textAlign:'center',
     fontSize:16,
-    fontStyle:'italic'
+    fontFamily: 'gruppo'
   }
 })
