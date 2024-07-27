@@ -1,5 +1,9 @@
 My HotWheels Collection V0.9
 
+Usuario de prueba:
+test@mail.com
+test123
+
 App para entrega final CoderHouse - Desarrollo de Aplicaciones(57275) y para posterior uso personal.
 
 Funcionalidades:
