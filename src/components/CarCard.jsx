@@ -1,9 +1,28 @@
 import { StyleSheet, Text, View} from 'react-native'
-import { Card, Button, Icon } from '@rneui/themed'
+import { Card, Button } from '@rneui/themed'
 import { Color } from '../global/myColors'
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useSelector } from 'react-redux';
+import { usePostNewWishedCarMutation } from '../services/dbServices';
+
 
 const CarCard = ({navigation, route}) => {
+  const [triggerPostNewCarToWishList, result] = usePostNewWishedCarMutation()
   const {model, photo_url, series, series_num, year} = route.params
+  const {user} = useSelector((state)=>state.auth.value)
+
+  const handleAddToWishList=()=>{
+    const newCar = {
+      model: model,
+      series: series,
+      series_num : series_num,
+      year: year,
+      user: user,
+      photo_url: photo_url
+    }
+    triggerPostNewCarToWishList(newCar)
+  }
+  
   return (
     <View style={styles.container}>
         <Card containerStyle={styles.card}>
@@ -13,22 +32,20 @@ const CarCard = ({navigation, route}) => {
             source={{uri:photo_url}}
             resizeMode='contain'
           />
-          <Text style={{ marginTop: 10 }}>
+          <Text style={{ marginTop: 10, fontSize: 20 }}>
             Serie: {series}
           </Text>
-          <Text>
+          <Text style={{ fontSize: 20 }}>
             Número: {series_num}
           </Text>
-          <Text style={{marginBottom:10}}>
+          <Text style={{marginBottom:10 , fontSize: 20}}>
             Año: {year}
           </Text>
+          
           <Button
+            onPress={()=>handleAddToWishList()}
             icon={
-              <Icon
-                name="code"
-                color= {Color.homeIconsText}
-                iconStyle={{ marginRight: 10 }}
-              />
+              <MaterialCommunityIcons name="cart-heart" color='white' size={30}/>
             }
             buttonStyle={{
               backgroundColor: Color.appBG,
@@ -36,8 +53,9 @@ const CarCard = ({navigation, route}) => {
                 borderWidth: 0,
                 borderRadius: 30,
             }}
-            title="VIEW NOW"
+            title=" Agregar a Deseados"
           />
+          
         </Card>
       </View>
   )

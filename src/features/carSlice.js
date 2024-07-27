@@ -16,7 +16,7 @@ export const carSlice = createSlice({
     reducers:{
         
         addCarImg:(state, {payload})=>{
-            state.value.addCarImg = payload;
+            state.value.photo_url = payload;
         }
     }
 })

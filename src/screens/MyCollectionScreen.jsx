@@ -16,9 +16,7 @@ const MyCollectionScreen = ({navigation}) => {
   const [cantidadAutos, setCantidadAutos] = useState(0)
 
   useEffect(()=>{
-    console.log('entro al useeffect')
     if(!isLoading){
-      console.log('entro al if')
       setCantidadAutos (data.length)
       const filtered = data.filter(
         (car) => car.model.toLocaleString().toLocaleLowerCase().includes(keyword.toLocaleLowerCase()));
@@ -28,7 +26,11 @@ const MyCollectionScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      { cantidadAutos !=0 || isLoading ?
       <Filters keyword={keyword} setKeyWord={setKeyword}/>
+      :
+      <></>}
+      
       { cantidadAutos !=0 || isLoading ? <CarList navigation={navigation} data={filteredCars}/> : <EmptyCollection navigation={navigation} user={user}/>}
     </View>
   )

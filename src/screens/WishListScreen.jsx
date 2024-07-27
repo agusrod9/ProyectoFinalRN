@@ -3,10 +3,13 @@ import Filters from '../components/Filters'
 import CarList from '../components/CarList'
 import { Color } from '../global/myColors'
 import { useState, useEffect } from 'react'
-import { useGetCarsQuery } from '../services/dbServices'
+import { useGetCarsQuery, useGetWishedCarsByUserQuery } from '../services/dbServices'
+import { useSelector } from 'react-redux'
 
 const WishListScreen = ({navigation}) => {
-  const {data, isLoading} = useGetCarsQuery()
+
+  const {user} = useSelector((state) => state.auth.value)
+  const {data, isLoading} = useGetWishedCarsByUserQuery(user)
   const [keyword, setKeyword] = useState('')
   const [filteredCars, setFilteredCars] = useState([])
   

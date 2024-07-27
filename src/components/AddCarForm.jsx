@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { StyleSheet, Text, TextInput, View, Pressable } from 'react-native'
 import { Color } from '../global/myColors'
 import { usePostNewCollectedCarMutation } from '../services/dbServices'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { addCarImg } from '../features/carSlice'
 
-const AddCarForm = ({setImage}) => {
+
+const AddCarForm = () => {
 
   const [model, setModel] = useState('')
   const [series, setSeries] = useState('')
@@ -12,25 +14,34 @@ const AddCarForm = ({setImage}) => {
   const [year, setYear] = useState('')
   const [triggerPostNewCar, result] = usePostNewCollectedCarMutation()
   const {user} = useSelector((state) => state.auth.value)
+  const {photo_url} = useSelector((state)=> state.car.value)
+  const dispatch = useDispatch()
+
 
   const clearScreen = () =>{
     setModel(null),
     setSeries(null),
     setSeriesNumber(null),
-    setYear(null)
+    setYear(null),
+    dispatch(addCarImg(null))
   }
   const handleAddCar = (model, series, seriesNumber, year) =>{
-    //
-    const newCar = {
-      model: model,
-      series: series,
-      series_num : seriesNumber,
-      year: year,
-      user: user,
-      img: 'img'
+
+    if(model=="" || series=="" || seriesNumber=="" || year=="" || photo_url==null){
+      //display modal
+    }else{
+      const newCar = {
+        model: model,
+        series: series,
+        series_num : seriesNumber,
+        year: year,
+        user: user,
+        photo_url: photo_url
+      }
+      triggerPostNewCar(newCar)
+      clearScreen()
     }
-    triggerPostNewCar(newCar)
-    clearScreen()
+    
   }
 
 
