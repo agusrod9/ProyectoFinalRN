@@ -1,5 +1,8 @@
 My HotWheels Collection V0.9
 
+--Refactor expo SDK ver 52 <br>
+--implemento dotenv
+
 Usuario de prueba:
 test@user.com
 pass1234
