@@ -1,10 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { dbUrl } from "../database/realtimeDataBase";
 
 
 export const myHotWheelsApi = createApi({
     reducerPath: "dbApi",
-    baseQuery: fetchBaseQuery({baseUrl:dbUrl}),
+    baseQuery: fetchBaseQuery({baseUrl: `${process.env.DB_URL}`}),
     endpoints: (builder)=>({
         getCars: builder.query({
             query: ()=> `allCars.json`, 

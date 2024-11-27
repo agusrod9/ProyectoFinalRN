@@ -2,6 +2,7 @@
   "expo": {
     "name": "ProyectoHW",
     "slug": "ProyectoHW",
+    "newArchEnabled": true,
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/img/icon.png",
@@ -30,8 +31,8 @@
           "cameraPermission": "$(PRODUCT_NAME) quiere acceder a tu cámara."
         }
       ],
-        
-      "expo-font"
+      "expo-font",
+      "expo-sqlite"
     ]
   }
 }

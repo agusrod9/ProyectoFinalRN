@@ -15,6 +15,7 @@ const Navigator = () => {
     (async()=>{
       try{
         const response = await getSession()
+        console.log({response: response})
         if(response.rows.length){
           const user = response.rows._array[0]
           dispatch(setUser({
@@ -25,14 +26,22 @@ const Navigator = () => {
         }
       }catch (error){
         //display Modal
+        console.log({loginError: error});
       }
     })()})
 
-
   return (
-    <NavigationContainer>
+
+    /*
+      <NavigationContainer>
       {user ? <BottomTabsNavigator/> : <AuthStackNavigator/>}
-    </NavigationContainer>
+  </NavigationContainer>
+    */
+  <NavigationContainer>
+   <BottomTabsNavigator/>
+  </NavigationContainer>
+    
+
   )
 }
 
