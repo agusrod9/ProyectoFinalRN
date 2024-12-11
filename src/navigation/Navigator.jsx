@@ -3,21 +3,23 @@ import BottomTabsNavigator from './BottomTabsNavigator'
 import AuthStackNavigator from './AuthStackNavigator'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getSession } from '../persistence'
+import { getSession, initSQLiteDB } from '../persistence'
 import { setUser } from '../features/userSlice'
+import {  useSQLiteContext} from 'expo-sqlite'
 
 
 const Navigator = () => {
+  
+  
+  const db = useSQLiteContext();
   const {user} = useSelector((state) => state.auth.value)
   const dispatch = useDispatch()
-
   useEffect(()=>{
     (async()=>{
-      try{
-        const response = await getSession()
-        console.log({response: response})
-        if(response.rows.length){
-          const user = response.rows._array[0]
+      try{        
+        const response = await getSession(db);
+        if(response){
+          const user = response
           dispatch(setUser({
             email: user.email,
             localId: user.localId,
@@ -31,17 +33,12 @@ const Navigator = () => {
     })()})
 
   return (
-
-    /*
-      <NavigationContainer>
-      {user ? <BottomTabsNavigator/> : <AuthStackNavigator/>}
-  </NavigationContainer>
-    */
-  <NavigationContainer>
-   <BottomTabsNavigator/>
-  </NavigationContainer>
     
-
+      <NavigationContainer>
+        {user ? <BottomTabsNavigator/> : <AuthStackNavigator/>}
+      </NavigationContainer>
+    
+    
   )
 }
 

@@ -4,14 +4,15 @@ import { Color } from '../global/myColors'
 import { truncateSessionTable } from '../persistence'
 import { useDispatch } from 'react-redux'
 import { clearUser } from '../features/userSlice'
+import { useSQLiteContext } from 'expo-sqlite'
 
 const ProfileScreen = () => {
-
+const db = useSQLiteContext();
 const dispatch = useDispatch()
 
     const logOut= async ()=>{
         try {
-            const logOut = await truncateSessionTable()
+            truncateSessionTable(db)
             dispatch(clearUser())
         } catch (error) {
             //display Modal

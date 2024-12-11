@@ -14,7 +14,8 @@ const SignupScreen = ({ navigation }) => {
   const [errorPassword, setErrorPassword] = useState('');
   const [confirmPassword, setconfirmPassword] = useState('');
   const [errorConfirmPassword, setErrorConfirmPassword] = useState('');
-
+  const db = useSQLiteContext();
+  
   const dispatch = useDispatch()
   const [triggerSignUp, result] = useSignUpMutation()
 

@@ -7,21 +7,11 @@ import store from './src/store';
 import { initSQLiteDB } from './src/persistence';
 import { useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
-
+import {SQLiteProvider} from 'expo-sqlite';
 
 SplashScreen.preventAutoHideAsync();
 
-(async ()=> {
-
-    try {
-      const response = await initSQLiteDB()
-    } catch (error) {
-
-    }
-    })()
-
 export default function App() {
-
   
 
   const [fontsLoaded, fontError] = useFonts({
@@ -45,7 +35,9 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}> 
       <Provider store={store}>
+      <SQLiteProvider databaseName='newSessions.db' onInit={initSQLiteDB}>
         <Navigator />
+      </SQLiteProvider>
       </Provider>
       
     </SafeAreaView>

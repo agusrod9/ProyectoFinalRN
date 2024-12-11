@@ -6,30 +6,30 @@ import { useSignInMutation } from "../services/authServices";
 import { useDispatch } from "react-redux";
 import { setUser } from "../features/userSlice";
 import { insertSession } from "../persistence";
-
+import { useSQLiteContext } from "expo-sqlite";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
   const [triggerSignIn, result] = useSignInMutation()
   const dispatch = useDispatch()
 
+  const db = useSQLiteContext();
   useEffect(() => {
     if(result?.data && result.isSuccess){
-      insertSession({
+      let res = insertSession({
+        db:db,
         email: result.data.email,
         localId: result.data.localId,
         token: result.data.idToken
-      }).then((response)=>{
+      })
+      if(res){
         dispatch(setUser({
           email: result.data.email,
           token: result.data.idToken,
           localId: result.data.localId
         }))
-      }).catch(error =>{
-        //display Modal
-      })
+      }
     }
 }, [result])
 
