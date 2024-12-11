@@ -6,6 +6,8 @@ import { Color } from "../global/myColors";
 import { useSignUpMutation } from "../services/authServices";
 import { setUser } from "../features/userSlice";
 import {signUpSchema} from '../validations/signUpSchema'
+import {useSQLiteContext} from 'expo-sqlite';
+
 
 const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
